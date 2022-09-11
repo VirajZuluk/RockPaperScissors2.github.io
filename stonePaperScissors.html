@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            background-image: linear-gradient(#1D976C,#deffea);
+        }
+        .header{
+            position: absolute;
+            padding-left: 25%;
+            padding-right: 24%;
+            top: 0px;
+            height: 150px;
+            background: #1D976C;
+        }
+        .title{
+            /* margin-top: 80px; */
+            color: aliceblue;
+            padding-top: 0px;
+            text-align: center;
+            font-size: 60px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        
+        .r{
+            background: url("rock.png");
+        } 
+        .r:hover{
+            transform: scale(1.03);
+            box-shadow: 0px 6px 20px #1c8661;
+        }
+        .p{
+            background: url("paper.png");
+        }
+        .p:hover{
+            transform: scale(1.03);
+            box-shadow: 0px 6px 20px #1c8661;
+        }
+        .s{
+            background: url("scissors.png");
+        }
+        .s:hover{
+            transform: scale(1.03);
+            box-shadow: 0px 6px 20px #1c8661;
+        }
+        .mainBtn{
+            margin-top: 25px;
+            background-position: center;
+            background-size: 160px;
+            display: block;
+            height: 160px;
+            width: 160px;
+            border-radius: 50%;
+            border-color: rgba(255, 255, 255, 0);
+        }
+        .container{
+            margin-top: 35px;
+            margin-left: 470px;
+            margin-right: 470px;
+            height: 210px;
+            display: flex;
+            justify-content: space-around;
+            /* background-color: aquamarine; */
+        }
+        
+
+        .start{
+            margin-top: 36px;
+            margin-left: 47%;
+            /* height: 50px;
+            width: 90px; */
+            padding: 12px 24px 12px 24px;
+            border-radius: 6px;
+            background-color: #1D976C;
+            border:none;
+            color: white;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .start:hover{
+            transform: scale(1.02);
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .starter{
+            margin-top: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 40px;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #divstart1{
+            margin-top: 230px;            
+            margin-left: 250px;
+            margin-right: 250px;
+            /* background-color: rgb(185, 119, 247); */
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .resImg{
+            height: 220px;
+            border: 4px solid white;
+            border-radius: 50%;
+        }
+
+        #namer{
+            height: 25px;
+            margin-right: 50px;
+            margin-left: 80px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #namer2{
+            height: 40px;
+            margin-right: 33px;
+            margin-left: 40px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .namer{
+            font-size: 20px;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .namer2{
+            font-size: 30px;
+            color: #156b4d;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #setter{
+            /* display: flex; */
+            margin-top: 50px;
+            margin-left: 200px;
+            margin-right: 200px;
+            /* background-color: orange; */
+        }
+        .setter{
+            color: #18845f;
+            text-align: center;
+            font-size: 18px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+        #inpSetter{
+            width: 30px;
+            border: none;
+            border-radius: 3px;
+        }
+        #popBackground{
+            opacity: 0;
+            pointer-events: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            height: 1000px;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.443);
+            transition: opacity 0.4s ease-in-out;
+
+        }
+        #popBackground.active{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .pop{
+            position: fixed;
+            text-align: center;
+            top: 24%;
+            left: 33%;
+
+            height: 360px;
+            width: 550px;
+            background-color: white;
+            border-radius: 15px;
+        }
+        .message{
+            position: relative;
+            top: 27px;
+            /* background-color: #93F9B9; */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            
+        }
+        .congTxt{
+            position: absolute;
+            
+        }
+        .wonBy{
+            color: rgb(95, 94, 94);
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .wonBy1{
+            font-size: 25px;
+            color: rgb(21, 20, 20);
+            font-weight: bold;
+        }
+        #closebtn{
+            position: absolute;
+            right: 2px;
+            top: 25px;
+            height: 25px;
+            width: 25px;
+            font-size: 20px;
+            background-color: rgb(255, 255, 255);
+            /* background-color: rgb(180, 178, 178); */
+            border: none;
+            border-radius: 50%;
+            margin-right: 30px;
+            color: rgb(19, 19, 19);
+        }
+        #closebtn:hover{
+            background-color: rgb(232, 230, 230);;
+        }
+
+        .playAgain{
+            margin-left: 0%;
+            margin-top: 2.5%;
+            padding: 11px 25px 11px 25px;
+            background-color: rgb(0, 136, 255);
+            /* padding-top: 11px;
+            padding-bottom: 11px; */
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="header">
+        <h1 class="title">Rock . Paper . Scissors</h1>
+    </div>
+    <div id="divstart1">
+        <img class="resImg" id="user" style="transform:rotate(45deg);" src="rock.png" alt="">
+        <img class="resImg" id="comp" style="transform:rotate(-45deg)" src="rockR.png" alt="">
+    </div>
+
+    <div id="namer">
+        <h4 class="namer">&nbsp;You&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h4>
+        <h4 class="namer">Computer</h4>
+    </div>
+
+    <div id="namer2">
+        <h4 id="us" class="namer2">0&nbsp;&nbsp;&nbsp; </h4>
+        <h4 id="cs" class="namer2">0 </h4>
+    </div>
+
+    <div id="divstart">
+        <button id="startbtn" class="start" onclick="start(this)">Start</button>
+    </div>
+
+    <div class="container">
+        <button id="r" class="mainBtn r" ></button>
+        <button id="p" class="mainBtn p" ></button>
+        <button id="s" class="mainBtn s" ></button>
+    </div>
+
+
+    <div id="setter">
+        <h4 class="setter">Minimum wins : <input id="inpSetter" class="setter" type="text"></h4>
+    </div>
+
+    <div id="popBackground" >
+        <div class="pop">
+            <button id="closebtn" >&times;</button>
+            <div class="message">
+                <h1 id="greet" class="congText">Congratulations!</h1>
+                <h2 id="yourScoree" class="wonBy" style="padding-top: 10px;">Your</2>
+                <h2 id="compScoree" class="wonBy">Comp</2>
+                <h1 id="wonloseby" class="wonBy1" style="padding-top:10px;">You won by points</h1>
+                <button id="playAg" class="start playAgain" >Play again</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgaudio" loop>
+        <source src="taratata-6264.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="winaudio" loop>
+        <source src="win2.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="loseaudio" loop>
+        <source src="lost2.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="gamebgmaudio" loop>
+        <source src="gamebgm.mp3" type="audio/mpeg">
+    </audio>
+</body>
+    <script>
+        var startbtn = document.getElementById('startbtn');
+
+        var rockTxt = document.createElement('h1');
+        rockTxt.className="starter"
+        rockTxt.textContent="viraj"
+
+        var divstart = document.getElementById('divstart');
+        // startbtn.remove();
+        // divstart.append(rockTxt);
+        var rockbtn = document.getElementById('r');
+        rockbtn.addEventListener('click',guessR);
+
+        var paperbtn = document.getElementById('p');
+        paperbtn.addEventListener('click',guessP);
+
+        var scissorbtn = document.getElementById('s');
+        scissorbtn.addEventListener('click',guessS);
+
+        var choice;
+
+        // console.log(compChoice[Math.round(x)])
+        var userRes = document.getElementById('user');
+        var compRes = document.getElementById('comp');
+        var compChoice = ["rock","paper","scissors"];
+        var result = document.createElement('h1');
+        result.className="starter";  
+
+        var gameLength = document.getElementById('inpSetter');
+        var count=0;
+        var userCount=0;
+        var compCount=0;
+
+        var userScore = document.createElement('h4');
+        var compScore = document.createElement('h4');
+        userScore.className="namer2";
+        compScore.className="namer2";
+        var namer = document.getElementById('namer');
+        var namerR = document.getElementById('namer2');
+
+        var us = document.getElementById('us');
+        var cs = document.getElementById('cs');
+        // userScore.innerHTML=`<h4 class="namer2">${userCount}&nbsp;&nbsp;&nbsp; </h4>`;
+        // us.parentElement.replaceChild(userScore,namerR.firstElementChild);
+
+        // compScore.innerHTML=`<h4 class="namer2">${compCount}&nbsp;&nbsp;&nbsp; </h4>`;
+        // cs.parentElement.replaceChild(compScore,namerR.lastElementChild);
+        
+        var openbtn = document.getElementById('open');
+        var popBg = document.getElementById('popBackground');
+        var closebtn = document.getElementById('closebtn');
+        var greetmsg= document.getElementById("greet");
+        var userdisplay= document.getElementById("yourScoree");
+        var compdisplay= document.getElementById("compScoree");
+        var wonLoseBy = document.getElementById("wonloseby");
+        var round=0;
+        closebtn.addEventListener('click',close)
+
+        var againPlay = document.getElementById("playAg");
+        againPlay.addEventListener('click', restarttt);
+
+        var bgmusic = document.getElementById("bgaudio");
+        var winmusic = document.getElementById("winaudio")
+        var losemusic = document.getElementById("loseaudio")
+        var gamebgmusic = document.getElementById("gamebgmaudio")
+        var playbgm = false;
+        var gamebgm = true;
+        // setTimeout(bgplay,2000)
+
+        if(gamebgm==true)
+        {
+            gamebgplay();
+            // gamebgm==false;
+        }
+
+        function winplay()
+        {
+            winmusic.autoplay=true;
+            winmusic.load();
+        }
+        function loseplay()
+        {
+            losemusic.autoplay=true;
+                losemusic.load();
+        }
+        function bgplay()
+        {
+            bgmusic.autoplay=true;
+            bgmusic.load();
+        }
+        function gamebgplay()
+        {
+            gamebgmusic.autoplay=true;
+            gamebgmusic.load();
+        }
+
+
+        function restarttt()
+        {
+            close();
+
+            winmusic.autoplay=false;
+            winmusic.load();
+            losemusic.autoplay=false;
+            losemusic.load();
+            // bgmusic.autoplay=true;
+            // bgmusic.load();
+            gamebgm = true;
+
+            playbgm=false;
+            compCount=0;
+            userCount=0;
+            console.log("comp count"+compCount)
+            count=0;
+            round=0;
+            userUpdate();
+            compUpdate();
+            startbtn.textContent="Start";
+            startbtn.style="margin-left: 47%";
+
+            divstart.replaceChild(startbtn,result)
+            userRes.src="rock.png";
+            userRes.style="border-color:white"
+            userRes.style="transform:rotate(45deg)";
+            compRes.src="rockR.png";
+            compRes.style="transform:rotate(-45deg)";
+            rockTxt.textContent="viraj"
+            console.log(rockTxt.textContent+round)
+            gameLength.value=0;
+            
+            
+
+        }
+
+        function fun()
+        {
+            console.log(popBg)
+            popBg.classList.add("active");
+            
+        }
+        function close()
+        {
+            console.log(popBg)
+            popBg.classList.remove('active');
+        }
+
+
+        function start(currentElement)
+        {   
+            if(playbgm==false)
+            {
+                bgplay();
+                playbgm=true;
+                gamebgm=false;
+            }
+
+            if(gameLength.value==0)
+            alert("Please set game length!");
+            
+            else if(rockTxt.textContent=="viraj")
+            {
+                round++;
+                rockTxt.textContent="ROCK";
+                setTimeout(start,600);
+                divstart.replaceChild(rockTxt,currentElement)
+            }
+            else if(rockTxt.textContent=="ROCK")
+            {
+                rockTxt.textContent="PAPER";
+                setTimeout(start,600);
+            }
+            else if(rockTxt.textContent=="PAPER")
+            {
+                rockTxt.textContent="SCISSORS";
+                setTimeout(start,600);
+            }
+            else if(rockTxt.textContent=="SCISSORS")
+            {
+                rockTxt.textContent="SHOOT!!!";
+                setTimeout(start,1000);
+                count++;
+            }
+        
+            // else
+            // replace();            
+        }
+
+        
+
+          
+        function guessR()
+        {
+            var random = Math.random() * 2;
+            choice="rock";
+            if(compChoice[Math.round(random)]=="rock")
+            {
+                console.log("Draw!");
+                userRes.src="rock.png";
+                userRes.style="border-color: rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="rockR.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+
+                result.style="color:#FAEA48";
+                result.textContent="Draw!";
+                // errormusic.autoplay=true;
+                // errormusic.load();
+            }
+            else if(compChoice[Math.round(random)]=="paper")
+            {
+                console.log("You lose");
+                userRes.src="rock.png";
+                compRes.src="paperF.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+
+                console.log(compRes.src);
+                result.style="color:#DE1010";
+                result.textContent="You lose!";
+                // errormusic.autoplay=true;
+                // errormusic.load();
+                compCount++;
+                // compUpdate();
+            //     compScore.innerHTML=`<h4 class="namer2">${compCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // cs.parentElement.replaceChild(compScore,namerR.lastElementChild);
+            }
+            else if(compChoice[Math.round(random)]=="scissors"){
+                console.log("You win!");
+                userRes.src="rock.png";
+                userRes.style="border-color: rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="scissorF.png";
+                result.style="color:#008450";
+                result.textContent="You win!";
+                // errormusic.autoplay=true;
+                // errormusic.load();
+                userCount++;
+                // userUpdate();
+            //     userScore.innerHTML=`<h4 class="namer2">${userCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // us.parentElement.replaceChild(userScore,namerR.firstElementChild);
+
+            }
+            
+            divstart.replaceChild(result,rockTxt)
+            setTimeout(replace,1300)
+            userUpdate();
+            compUpdate();
+        }
+
+        function userUpdate()
+        {
+            userScore.innerHTML=`${userCount}&nbsp;&nbsp;&nbsp;`;
+            namerR.replaceChild(userScore,namerR.firstElementChild);
+            console.log(namerR.firstElementChild)
+
+        }
+        function compUpdate()
+        {
+            compScore.textContent=`${compCount}`;
+            namerR.replaceChild(compScore,namerR.lastElementChild);
+            console.log(namerR.lastElementChild)
+
+        }
+
+        function replace()
+        {
+            
+            if(userCount==gameLength.value)
+            {
+                // alert("User : "+userCount+"\nComp : "+compCount)
+                bgmusic.autoplay=false;
+                bgmusic.load();
+                setTimeout(winplay,800);
+                greetmsg.textContent="Congratulations!";
+                greetmsg.style.color="#008450"
+                userdisplay.innerText=`Your score : ${userCount}`
+                compdisplay.innerText=`Comp score : ${compCount}`
+                if((userCount-compCount)>1)
+                    wonLoseBy.textContent=`You won by ${userCount-compCount} points`
+                else
+                    wonLoseBy.textContent=`You won by ${userCount-compCount} point`
+                
+                againPlay.style="background-color:rgb(0, 136, 255)";
+                againPlay.textContent="Play again"
+                setTimeout(fun,1000);
+            }
+            else if(compCount==gameLength.value)
+            {
+                // alert("User : "+userCount+"\nComp : "+compCount)
+                bgmusic.autoplay=false;
+                bgmusic.load();
+                
+                setTimeout(loseplay,800);
+                greetmsg.textContent="Better luck next time!";
+                greetmsg.style.color="#DE1010"
+                userdisplay.innerText=`Your score : ${userCount}`
+                compdisplay.innerText=`Comp score : ${compCount}`
+                if((compCount-userCount)>1)
+                    wonLoseBy.textContent=`You lost by ${compCount-userCount} points`
+                else
+                    wonLoseBy.textContent=`You lost by ${compCount-userCount} point`
+
+                againPlay.style="background-color:#FAEA48";
+                againPlay.textContent="Try again"
+                setTimeout(fun,1000);
+            }
+            else
+            {
+                divstart.replaceChild(startbtn,result)
+                userRes.src="rock.png";
+                userRes.style="border-color:white"
+                userRes.style="transform:rotate(45deg)";
+                compRes.src="rockR.png";
+                compRes.style="transform:rotate(-45deg)";
+                rockTxt.textContent="viraj"
+                startbtn.innerHTML=`Round ${round+1}`
+                startbtn.style="margin-left:46%;"
+            }
+        }
+
+        function guessP()
+        {
+            choice="paper";
+            var random = Math.random() * 2;
+            console.log(choice+'  '+compChoice[Math.round(random)])
+            if(compChoice[Math.round(random)]=="paper")
+            {
+                console.log("Draw!");
+                userRes.src="paper.png";
+                userRes.style="border-color: rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="paperF.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+
+                result.style="color:#FAEA48";
+                result.textContent="Draw!";
+            }
+            else if(compChoice[Math.round(random)]=="scissors")
+            {
+                console.log("You lose");
+                userRes.src="paper.png";
+                compRes.src="scissorF.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+                compRes.style="transform:rotate(-45deg)";
+
+                result.style="color:#DE1010";
+                result.textContent="You lose!";
+                compCount++;
+                // compUpdate();
+            //     compScore.innerHTML=`<h4 class="namer2">${compCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // cs.parentElement.replaceChild(compScore,namerR.lastElementChild);
+            }
+            else if(compChoice[Math.round(random)]=="rock")
+            {
+                console.log("You win!");
+                userRes.src="paper.png";
+                userRes.style="border-color:rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="rockR.png";
+                result.style="color:#008450";
+                result.textContent="You win!";
+                userCount++;
+                // userUpdate();
+            //     userScore.innerHTML=`<h4 class="namer2">${userCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // us.parentElement.replaceChild(userScore,namerR.firstElementChild);
+
+            }
+            divstart.replaceChild(result,rockTxt)
+            setTimeout(replace,1300)
+            userUpdate();
+            compUpdate();
+        }
+
+        function guessS()
+        {
+            choice="scissor";
+            var random = Math.random() * 2;
+            console.log(choice+'  '+compChoice[Math.round(random)])
+            if(compChoice[Math.round(random)]=="scissors")
+            {
+                console.log("Draw!");
+                userRes.src="scissors.png";
+                userRes.style="border-color: rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="scissorF.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+
+                result.style="color:#FAEA48";
+                result.textContent="Draw!";
+            }
+            else if(compChoice[Math.round(random)]=="rock")
+            {
+                console.log("You lose");
+                userRes.src="scissors.png";
+                compRes.src="rockR.png";
+                compRes.style="border-color: rgb(0, 119, 255);transform:rotate(-45deg)";
+
+                result.style="color:#DE1010";
+                result.textContent="You lose!";
+                compCount++;
+                // compUpdate();
+            //     compScore.innerHTML=`<h4 class="namer2">${compCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // cs.parentElement.replaceChild(compScore,namerR.lastElementChild);
+            }
+            else if(compChoice[Math.round(random)]=="paper")
+            {
+                console.log("You win!");
+                userRes.src="scissors.png";
+                userRes.style="border-color:rgb(0, 119, 255);transform:rotate(45deg)";
+
+                compRes.src="paperF.png";
+                result.style="color:#008450";
+                result.textContent="You win!";
+                userCount++;
+                // userUpdate();
+            //     userScore.innerHTML=`<h4 class="namer2">${userCount}&nbsp;&nbsp;&nbsp; </h4>`;
+            // us.parentElement.replaceChild(userScore,namerR.firstElementChild);
+            }
+            divstart.replaceChild(result,rockTxt)
+            setTimeout(replace,1300)
+            userUpdate();
+            compUpdate();
+        }
+
+
+    </script>
+
+</html>
